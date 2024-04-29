@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <title>Digital Clock</title>
+
+    <style>
+
+    body{
+        background: linear-gradient(90deg, #002333, #159A9C);
+    }
+    h1{
+        color: white;
+        padding-bottom: 50px;
+        padding-top: 20px;
+    }
+
+    .time{
+        text-shadow: 5px 5px 5px #B4BEC9;
+        font-weight: 700;
+    }
+
+    #words{
+        font-size: small;
+        text-shadow: 5px 5px 5px #B4BEC9;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        font-weight: bold;
+
+    }
+
+
+    div span:first-of-type{
+        font-weight: 400;
+    }
+        .clock {
+    font-family: Arial, sans-serif;
+    font-size: 6em;
+    color: black;
+    background-color: #DEEFE7; /* Light blue background */
+    padding: 40px;
+    border-radius: 50%;
+    min-height: 60vh;
+    width: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto; /* Center the clock */
+    box-shadow: 0 0 10px #B4BEC9;
+    
+}
+
+/* 
+#hour, #minute, #second {
+    color: #000; Black text color */
+/* } */
+
+    </style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <div class="clock">
+        <div>
+            <span id="words">Hours</span>
+            <span class="time">00</span>
+        </div>
+        <div>
+            <span id="words">Minutes</span>
+            <span class="time">00</span>
+        </div>
+        <div>
+            <span id="words">Seconds</span>
+            <span class="time">00</span>
+
+        </div>
+    </div>
+</body>
+<script>
+    const spans = document.getElementsByClassName('time')
+
+    const updateTime = () => {
+        const currentTime = new Date()
+
+        const sec = currentTime.getSeconds();
+        const min = currentTime.getMinutes();
+        const hr = currentTime.getHours();
+
+        const hours = Math.floor(hr) < 10 ? '0' + Math.floor(hr) : Math.floor(hr)
+
+        const Minutes = Math.floor(min) < 10 ? '0' + Math.floor(min) : Math.floor(min)
+
+        const seconds = Math.floor(sec) < 10 ? '0' + Math.floor(sec) : Math.floor(sec)
+
+       
+        spans[0].textContent = hours
+        spans[1].textContent = Minutes
+        spans[2].textContent = seconds
+
+        const time = setInterval(updateTime, 1000)
+
+    }
+
+    updateTime()
+</script>
+</html>
